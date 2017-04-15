@@ -1,0 +1,298 @@
+\documentclass[twoside]{scrartcl}
+%\documentclass[numbers=noenddot]{scrbook}	%ohne numbers=noenddot sähen die Section so aus: 3.3. Module
+\usepackage[utf8x]{inputenc}
+\usepackage[english,german]{babel}
+%\usepackage[a4paper]{geometry}
+\usepackage[a5paper]{geometry}
+\usepackage{amsmath,amssymb,amsthm,amstext}		%AMS Pakete; \text{}
+\usepackage{gensymb}					%definiert \ohm
+\usepackage[pdftex]{graphicx}			%Paket für Bilddateien
+\usepackage[usenames,dvipsnames]{xcolor}						%Paket für Farben
+\usepackage{pdflscape}
+\usepackage{hhline}
+%\input{GraphicsMacros}
+%\usepackage{fancybox}					%Boxen, genutzt für die Erklärungsbox(en)
+\usepackage{fancyvrb}					%Boxen mit Verbatim-Inhalt
+\usepackage[Sonny]{fncychap}			%anders formatierte Kapitelüberschriften, mögliche Parameterwerte: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne
+
+%folgende Pakete sind aus 'Der \LaTeX Begleiter' von Michel Goossens, Frank Mittelbach, Alexander Samarin entnommen
+%\usepackage[german]{varioref}			%\vref{schlüssel}, \vpageref{schlüssel}
+%\usepackage{doublespacing}				%\begin{spacing}{1.5} ... \end{spacing}	%gibt es nicht :(
+%\usepackage{picinpar}					%\begin{figwindow}[anzahl zeilen vor dem fenster, position lcr, {\fbox{\includegraphic{}}, Bildunterschrift] \end[figwindow}
+%\usepackage{program}					%\begin{programbox} programmcode... \end{programbox}
+\usepackage{tabularx}					%wie tabular ABER bestimmt die Spaltenbreiten selbst! \begin{tabularx}{tabellenbreite z.B. \linewidth}{l|l|l|..} \end{tabularx} mehr aus Seite 116
+\usepackage{colortbl}					%farbige Zellen mit \cellcolor{gray}
+\usepackage{multirow}
+\usepackage{multicol}
+%\usepackage{colortbl}					%definiert \cellcolor{farbe}
+%\usepackage{delarray}					%sinnvoll bei Matrizen oder abschnittsweise definierten Funktionen, mehr auf Seite 119
+%\usepackage{floatflt}					%\begin{floatingfigure}{breite} .. \caption{} \label{} \end{floatingfigure}
+\usepackage{wrapfig}					%ähnlich floatfig, aber keine automatische Positionierung der Abbildungen; siehe Seite 155
+%\usepackage{float}					%
+\usepackage{subcaption}
+\usepackage{rotating}
+
+%\usepackage{listings}					%zum Listen von Code
+\usepackage{capt-of}
+
+\usepackage{wallpaper}					%Hintergrundbild
+
+\usepackage{tikz}						%"Malprogramm"
+%\usetikzlibrary{decorations}
+%\usetikzlibrary{arrows}
+%\usetikzlibrary{calc}
+%\usetikzlibrary{shadows}
+%\usetikzlibrary{automata}
+%\usetikzlibrary{matrix}
+%\usetikzlibrary{trees}
+%\usetikzlibrary{positioning}
+%\usetikzlibrary{patterns}
+%\usetikzlibrary{shapes}
+%\usetikzlibrary{shadows.blur}
+%\usetikzlibrary{shapes.symbols}
+%\usetikzlibrary{circuits}
+%\usetikzlibrary{snakes}	%mittlerweile in decorations enthalten
+%\usepackage{pgfplots}
+%\pgfplotsset{compat=1.3}
+%\usepackage{pgfplotstable}
+%\usepackage[siunitx]{circuitikz}
+%\usepackage{tikz-timing}
+%\usepackage{tikz-3dplot}
+
+\usepackage{xifthen}
+
+\usepackage[normalem]{ulem}
+
+%\usepackage{abstract}					%funktioniert nur in der article oder report Umgebung
+
+%\usepackage{mathptmx}					%Times New Roman				Normaltext & Formeln
+%\usepackage{mathpazo}					%Palatino						Normaltext & Formeln
+%\usepackage{courier}					%Courier						Text in Schreibmaschinenschrift
+%\usepackage[scaled]{helvet}			%Helvetica 						Serifenloser Text
+%\usepackage{bookman}					%Bookman 						Normaltext
+%\usepackage{newcent}					%New Century Schoolbook 		Normaltext 
+%\usepackage{avant}						%Avant Garde					serifenlosen Text
+%\usepackage{charter}					%Charter						Normaltext
+%\usepackage{chancery}					%Zapf Chancery					Normaltext
+%\usepackage{palatino}
+%\usepackage{mathpalo}
+%\usepackage{chancery}
+%\usepackage{times}
+%\usepackage{eucal}						%calligraphic
+%\usepackage{pifont}					%ZapfDingbats font \ding{number}
+\usepackage{eurosym}
+\usepackage{wasysym}					%Sternzeichen und anderes (\male, \female, \lightning, ...)
+
+\usepackage[colorlinks]{hyperref}
+\usepackage[figure,table]{hypcap} 		% Correct a problem with hyperref
+\hypersetup{
+	bookmarksnumbered,
+	pdfstartview={FitH},
+	citecolor={black},
+	linkcolor={black},
+	urlcolor={MidnightBlue},
+	pdfpagemode={UseOutlines},
+	pdftitle={Thinking Big},
+	pdfauthor={Thorsten Spätling}
+	pdfsubject={}
+}
+%\usepackage[
+%%nonumberlist,	%keine Seitenzahlen anzeigen
+%acronym,		%ein Abkürzungsverzeichnis erstellen
+%toc,			%Einträge im Inhaltsverzeichnis
+%section]		%im Inhaltsverzeichnis auf section-Ebene erscheinen
+%{glossaries}			%gefunden auf http://ewus.de/tipp-1029.html
+
+%\usepackage{attachfile}
+%\attachfilesetup{color=.7 .7 1,icon=Paperclip}
+
+\input{makros}
+
+\usepackage{makeidx}
+%makeindex main.idx ausführen, danach kompilieren und der Index stimmt.
+
+\usepackage{caption}
+%\renewcommand{\figurename}{Abb.}
+%\renewcommand{\tablename}{Tab.}
+%\addto\captionsgerman{\renewcommand{\figurename}{Abb.}}
+%\addto\captionsgerman{\renewcommand{\tablename}{Tab.}}
+%\addto\captionsgerman{\renewcommand{\listingname}{Codebeispiel}}
+%\addto\captionsngerman{
+%\renewcommand{\figurename}{Abb.}
+%\renewcommand{\tablename}{Tab.}
+%}
+
+\usepackage{scrwfile}	%normalerweise können nur 18 Dateien gleichzeitig geändert werden, damit soll dieses Handicap umgangen werden.
+
+%\usepackage[euler]{textgreek}
+\usepackage{textcomp}			%pfeile
+
+%\usepackage{babelbib}	%deutsche Literaturverzeichniseinträge
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{german}
+
+\usepackage{footnote}	%für Fußnoten in Tabellen
+
+%\usepackage[titletoc]{appendix}
+%\renewcommand{\appendixname}{Anhang}
+
+\title{Thinking Big}
+\author{Thorsten Spätling\\
+{thorsten@ts-soft.info}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Abgabedatum %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\day=15 \month=04 \year=2013
+
+\makeindex
+%Glossar-Befehle anschalten
+%\makeglossaries
+
+%Diese Befehle sortieren die Einträge in den einzelnen Listen:
+%makeindex -s datei.ist -t datei.alg -o datei.acr datei.acn
+%makeindex -s datei.ist -t datei.glg -o datei.gls datei.glo
+%makeindex -s datei.ist -t datei.slg -o datei.syi datei.syg
+
+%\pdfimageresolution150
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Titelseite %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
+%\input{titlepage}
+%\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Seitennummerierung in arabischen Zahlen %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Inhalt %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%easteregg
+%\leftwatermark{\put(1cm,20cm){\includegraphics{images/jpg/ungerade.jpg}}} 
+%\rightwatermark{\put(14cm,20cm){\includegraphics{images/jpg/gerade.jpg}}} 
+%\CenterWallPaper{images/jpg/ungerade.jpg}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{tikzpicture}[remember picture, overlay]
+% \node[inner sep=0pt] at (current page.center) {%
+%  \includegraphics[width=\paperwidth,height=\paperheight]{images/EuropakarteStartZiel.png};%
+%};
+%  \node[black,fill=white,text width=10em] (blub) at (0.5,0) {Distanz etwa 3.600~km}; %
+%\end{tikzpicture}
+%\newpage
+%\begin{tikzpicture}[remember picture, overlay]
+% \node[inner sep=0pt] at (current page.center) {%
+%  \includegraphics[width=\paperheight,height=\paperwidth,angle=90]{images/InnerdeutscheGrenze.jpg};%
+%};
+%  \node[black,fill=white,text width=10em] (blub) at (0.5,0) {Distanz etwa 3.600~km}; %
+%\end{tikzpicture}
+%\newpage
+\pagenumbering{arabic}\setcounter{page}{1}
+\pagestyle{plain}
+%\pagestyle{headings}
+%\section*{"`Vorbereitungen"'}
+%	\input{prep}
+
+\subsection*{Border Patrol}
+\input{08/08}
+
+\subsection*{Zion, Lake Powell}
+\input{09/09}
+
+\subsection*{Grand Canyon}
+\input{10/10}
+
+\subsection*{Vasensaufen!}
+\input{11/11}
+
+\subsection*{Palm Springs}
+\input{12/12}
+
+\subsection*{San Diego}
+\input{13/13}
+
+\subsection*{Kulturschock!}
+\input{14/14}
+
+\subsection*{Zu den Engeln}
+\input{15/15}
+
+\subsection*{Stadtführung in L.A.}
+\input{16/16}
+
+\subsection*{Strand}
+\input{17/17}
+
+\subsection*{DISNEYLAND}
+\input{18/18}
+
+\subsection*{Auf nach Monterey}
+\input{19/19}
+
+\subsection*{Fische in Glaskästen}
+\input{20/20}
+
+\subsection*{Alcatraz}
+\input{21/21}
+
+\subsection*{Geisterstunde}
+\input{22/22}
+
+\subsection*{Goggle}
+\input{23/23}
+
+\subsection*{Half-dome}
+\input{24/24}
+
+\subsection*{Sequoias}
+\input{25/25}
+
+\subsection*{Noch mehr Sequoias}
+\input{26/26}
+
+\subsection*{Death Valley}
+\input{27/27}
+
+\subsection*{El Loco + Canyon Blaster}
+\input{28/28}
+
+\subsection*{Heimwärts}
+\input{29/29}
+
+\subsection*{Rückflug}
+\input{30/30}
+
+
+\subsection*{Zahlen}
+\input{stats}
+
+
+%\cleardoublepage{}
+%\newpage
+%\thispagestyle{empty}
+%\begin{tikzpicture}[remember picture, overlay]
+% \node[inner sep=0pt] at (current page.center) {%
+%  \includegraphics[width=\paperwidth,height=\paperheight]{images/EuropakarteStrecke.png};%
+%};
+%  \node[black,fill=white,text width=10em] (blub) at (0.5,0) {Distanz etwa 3.600~km}; %
+%\end{tikzpicture}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\bibliographystyle{plain}
+%\bibliography{bibliography}
+%\begin{theindex}
+%\printindex
+
+
+\end{document}
